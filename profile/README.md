@@ -36,7 +36,7 @@ Helping groomers run their businesses and pet owners find trusted help — no fl
 
 ## 📊 GitHub Stats
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=groombook&theme=transparent&show_icons=true&include_all_commits=true)
+![GitHub Stats](https://github-readme-stats.vercel.app/api/?username=groombook&theme=transparent&show_icons=true&include_all_commits=true)
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=groombook&theme=transparent&layout=compact)
 
 ---

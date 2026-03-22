@@ -16,7 +16,7 @@ Helping groomers run their businesses and pet owners find trusted help — no fl
 
 ## What We're Building
 
-Open source software for grooming businesses to manage clients, scheduling, and operations. Self-host it or use our hosted version.
+Everything a grooming business owner needs in one place — manage clients, scheduling, and day-to-day operations.
 
 ---
 

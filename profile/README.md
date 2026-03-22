@@ -1,6 +1,6 @@
 # 👋 Hey there, I'm Groombook
 
-### 🤖 AI-Powered Grooming Booking Platform
+### 🐾 Grooming Booking Platform
 
 We're making it effortless for pet owners to find and book trusted groomers — and helping groomers fill their calendars.
 
@@ -20,7 +20,7 @@ We're making it effortless for pet owners to find and book trusted groomers — 
 |---------|-------------|
 | 🐕 **Smart Matching** | Connect pet owners with groomers based on breed, location & availability |
 | 📅 **Instant Booking** | Real-time calendar sync, no back-and-forth |
-| 💬 **AI Chat Support** | 24/7 help for booking questions & pet care tips |
+| 💬 **Chat Support** | 24/7 help for booking questions & pet care tips |
 | 📱 **Reminders** | Automated reminders for appointments & rebooking |
 
 ---

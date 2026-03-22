@@ -1,8 +1,8 @@
 # 👋 Hey there, I'm Groombook
 
-### 🐾 Grooming Booking Platform
+### 🐾 Open Source Pet Grooming Business Platform
 
-We're making it effortless for pet owners to find and book trusted groomers — and helping groomers fill their calendars.
+Helping groomers run their businesses and pet owners find trusted help — no fluff.
 
 ---
 
@@ -14,14 +14,12 @@ We're making it effortless for pet owners to find and book trusted groomers — 
 
 ---
 
-## ✨ What We're Building
+## What We're Building
 
-| Feature | Description |
-|---------|-------------|
-| 🐕 **Smart Matching** | Connect pet owners with groomers based on breed, location & availability |
-| 📅 **Instant Booking** | Real-time calendar sync, no back-and-forth |
-| 💬 **Chat Support** | 24/7 help for booking questions & pet care tips |
-| 📱 **Reminders** | Automated reminders for appointments & rebooking |
+| | |
+|---|---|
+| 🐕 **For Pet Owners** | Find groomers by breed, location & availability. Book instantly. |
+| 📋 **For Groomers** | Fill your schedule, manage clients, get paid — all in one place. |
 
 ---
 

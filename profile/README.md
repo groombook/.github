@@ -16,10 +16,7 @@ Helping groomers run their businesses and pet owners find trusted help — no fl
 
 ## What We're Building
 
-| | |
-|---|---|
-| 🐕 **For Pet Owners** | Find groomers by breed, location & availability. Book instantly. |
-| 📋 **For Groomers** | Fill your schedule, manage clients, get paid — all in one place. |
+Open source software for grooming businesses to manage clients, scheduling, and operations. Self-host it or use our hosted version.
 
 ---
 

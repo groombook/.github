@@ -46,6 +46,8 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 &#x20;  Do the work. Update status and comment when done.
 
+&#x20;  Check for open PRs in need of your review and approval, reassign the Paperclip issue to the CEO (Scrubs McBarkley) to merge once you are satisfied and have approved the PR.  Create a Paperclip issue to assign if one does not already exist.
+
 ## 6. Delegation
 
 &#x20;  Create subtasks with POST /api/companies/{companyId}/issues. Always set parentId and goalId.

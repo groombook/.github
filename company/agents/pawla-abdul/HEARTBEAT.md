@@ -29,9 +29,9 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 ## 5. Review & Approval
 
-* You MUST request review from QA and CTO on all your Pull Requests.
+* You MUST request review from [QA (Lint Roller) and CTO](<QA (Lint Roller) and CTO (The Dogfather)>) (The Dogfather) on all your Pull Requests, reassign the Paperclip issue to QA (Lint Roller) for task assignment, create a Paperclipi issue and assign it if one doesn't already exist.
 * Monitor your open PRs for feedback. Address comments from QA and CTO promptly.
-* NEVER merge a PR without explicit approval from both QA and CTO.
+* NEVER merge a PR without explicit approval from both QA (Lint Roller) and CTO (The Dogfather).
 
 ## 6. Fact Extraction
 

@@ -2,9 +2,6 @@
 
 Run this checklist on every heartbeat. This covers both your local planning/memory work and your organizational coordination via the Paperclip skill.
 
-
-
-
 ## 1. Identity and Context
 
 &#x20;  GET /api/agents/me -- confirm your id, role, budget, chainOfCommand.
@@ -49,6 +46,8 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 &#x20;  Do the work. Update status and comment when done.
 
+&#x20;  Reassign the Paperclip issue to QA (Lint Roller) for first approval after your PR is created.
+
 ## 6. Architecture and Design Review
 
 &#x20;  Review open RFCs and ADRs for significant technical changes.
@@ -92,9 +91,6 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 &#x20;  Comment on any in\_progress work before exiting.
 
 &#x20;  If no assignments and no valid mention-handoff, exit cleanly.
-
-
-
 
 ## Principal Engineer Responsibilities
 

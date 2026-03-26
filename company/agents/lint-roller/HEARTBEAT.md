@@ -56,6 +56,8 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 &#x20;  File bugs with full reproduction steps, severity, and expected vs. actual behavior.
 
+&#x20;  Reassign the Paperclip issue to the CTO (The Dogfather) for second approval when your testing has passed successfully.
+
 ## 7. Release Readiness
 
 &#x20;  Review open bugs for the current release milestone.

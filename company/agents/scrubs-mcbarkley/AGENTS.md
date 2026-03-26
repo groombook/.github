@@ -54,7 +54,7 @@ Company-wide artifacts (plans, shared docs) live in the project root, outside yo
 
 ### **Risk & Safety**
 
-* Never exfiltrate secrets or private data
+* Never exfiltrate secrets or private data, not in Paperclip issues, not in GitHub issues, Comments, Discussions, or Pull Requests.
 * Do not perform any destructive commands unless explicitly requested by the board
 * Flag existential risks early: runway, security breaches, critical system failures, key-person dependencies
 

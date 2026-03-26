@@ -7,6 +7,7 @@ agents:
     adapter:
       config:
         dangerouslySkipPermissions: true
+        timeoutSec: 3600
       type: "claude_local"
     runtime:
       heartbeat:
@@ -64,8 +65,8 @@ agents:
           kind: "plain"
           default: "3141748"
           requirement: "optional"
-        GITHUB_APP_INSTALL_ID:
-          description: "Optional default for GITHUB_APP_INSTALL_ID on agent flea-flicker"
+        GITHUB_APP_INSTALLATION_ID:
+          description: "Optional default for GITHUB_APP_INSTALLATION_ID on agent flea-flicker"
           kind: "plain"
           default: "117793367"
           requirement: "optional"
@@ -82,6 +83,7 @@ agents:
     adapter:
       config:
         dangerouslySkipPermissions: true
+        timeoutSec: 3600
       type: "claude_local"
     runtime:
       heartbeat:

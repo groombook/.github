@@ -11,7 +11,6 @@
 | Content | Count |
 |---------|-------|
 | Agents | 5 |
-| Projects | 5 |
 | Skills | 9 |
 
 ### Agents
@@ -20,17 +19,9 @@
 |-------|------|------------|
 | Flea Flicker | Engineer | the-dogfather |
 | Lint Roller | qa | the-dogfather |
-| Pawla Abdul | CMO | scrubs-mcbarkley |
+| Pawla Abdul | Agent | scrubs-mcbarkley |
 | Scrubs McBarkley | CEO | — |
 | The Dogfather | CTO | scrubs-mcbarkley |
-
-### Projects
-
-- **GroomBook App** — This git repository is the primary GroomBook Application source code and associated build artifacts.
-- **GroomBook Infra** — This repository is the infrastructure associated with the development and production/demo instances of GroomBook.  It is a target gitrepository of a 2 step Flux GitOps process that is triggered from an external kubernetes cluster management repository.
-- **GroomBook Org** — This repository houses the organization level GitHub Pages as well as shared GitHub Actions.
-- **GroomBook Site** — This repository houses the primary GitHub Pages based site for the GroomBook Platform.
-- **Onboarding**
 
 ### Skills
 

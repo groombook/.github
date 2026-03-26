@@ -4,6 +4,14 @@
     "github": {
       "type": "http",
       "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "web_search": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+ssh://git@github.com:MiniMax-AI/minimax_search.git",
+        "minimax-search"
+      ],
     }
   }
 }

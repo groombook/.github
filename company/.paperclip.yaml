@@ -1,0 +1,300 @@
+schema: "paperclip/v1"
+agents:
+  flea-flicker:
+    role: "engineer"
+    icon: "code"
+    capabilities: "Principal software engineer responsible for core platform architecture, implementation, and technical execution."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 14400
+    inputs:
+      env:
+        ANTHROPIC_AUTH_TOKEN:
+          description: "Optional default for ANTHROPIC_AUTH_TOKEN on agent flea-flicker"
+          kind: "secret"
+          default: ""
+          requirement: "optional"
+        ANTHROPIC_BASE_URL:
+          description: "Optional default for ANTHROPIC_BASE_URL on agent flea-flicker"
+          kind: "plain"
+          default: "https://api.minimax.io/anthropic"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_HAIKU_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_HAIKU_MODEL on agent flea-flicker"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_OPUS_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_OPUS_MODEL on agent flea-flicker"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_SONNET_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_SONNET_MODEL on agent flea-flicker"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_MODEL:
+          description: "Optional default for ANTHROPIC_MODEL on agent flea-flicker"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_SMALL_FAST_MODEL:
+          description: "Optional default for ANTHROPIC_SMALL_FAST_MODEL on agent flea-flicker"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        API_TIMEOUT_MS:
+          description: "Optional default for API_TIMEOUT_MS on agent flea-flicker"
+          kind: "plain"
+          default: "3000000"
+          requirement: "optional"
+        CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC:
+          description: "Optional default for CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC on agent flea-flicker"
+          kind: "plain"
+          default: "1"
+          requirement: "optional"
+        GITHUB_APP_ID:
+          description: "Optional default for GITHUB_APP_ID on agent flea-flicker"
+          kind: "plain"
+          default: "3141748"
+          requirement: "optional"
+        GITHUB_APP_INSTALL_ID:
+          description: "Optional default for GITHUB_APP_INSTALL_ID on agent flea-flicker"
+          kind: "plain"
+          default: "117793367"
+          requirement: "optional"
+        GITHUB_APP_PEM_FILE:
+          description: "Optional default for GITHUB_APP_PEM_FILE on agent flea-flicker"
+          kind: "plain"
+          default: "/secrets/groombook/groombook-engineer.pem"
+          portability: "system_dependent"
+          requirement: "optional"
+  lint-roller:
+    role: "qa"
+    icon: "bug"
+    capabilities: "Senior QA engineer responsible for test strategy, quality assurance, bug tracking, and release validation."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 14400
+        maxConcurrentRuns: 2
+    inputs:
+      env:
+        ANTHROPIC_AUTH_TOKEN:
+          description: "Optional default for ANTHROPIC_AUTH_TOKEN on agent lint-roller"
+          kind: "secret"
+          default: ""
+          requirement: "optional"
+        ANTHROPIC_BASE_URL:
+          description: "Optional default for ANTHROPIC_BASE_URL on agent lint-roller"
+          kind: "plain"
+          default: "https://api.minimax.io/anthropic"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_HAIKU_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_HAIKU_MODEL on agent lint-roller"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_OPUS_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_OPUS_MODEL on agent lint-roller"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_SONNET_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_SONNET_MODEL on agent lint-roller"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_MODEL:
+          description: "Optional default for ANTHROPIC_MODEL on agent lint-roller"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_SMALL_FAST_MODEL:
+          description: "Optional default for ANTHROPIC_SMALL_FAST_MODEL on agent lint-roller"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        API_TIMEOUT_MS:
+          description: "Optional default for API_TIMEOUT_MS on agent lint-roller"
+          kind: "plain"
+          default: "3000000"
+          requirement: "optional"
+        CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC:
+          description: "Optional default for CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC on agent lint-roller"
+          kind: "plain"
+          default: "1"
+          requirement: "optional"
+        GITHUB_APP_ID:
+          description: "Optional default for GITHUB_APP_ID on agent lint-roller"
+          kind: "plain"
+          default: "3141835"
+          requirement: "optional"
+        GITHUB_APP_INSTALLATION_ID:
+          description: "Optional default for GITHUB_APP_INSTALLATION_ID on agent lint-roller"
+          kind: "plain"
+          default: "117794928"
+          requirement: "optional"
+        GITHUB_APP_PEM_FILE:
+          description: "Optional default for GITHUB_APP_PEM_FILE on agent lint-roller"
+          kind: "plain"
+          default: "/secrets/groombook/groombook-qa.pem"
+          portability: "system_dependent"
+          requirement: "optional"
+  pawla-abdul:
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+      type: "claude_local"
+    inputs:
+      env:
+        ANTHROPIC_AUTH_TOKEN:
+          description: "Optional default for ANTHROPIC_AUTH_TOKEN on agent pawla-abdul"
+          kind: "secret"
+          default: ""
+          requirement: "optional"
+        ANTHROPIC_BASE_URL:
+          description: "Optional default for ANTHROPIC_BASE_URL on agent pawla-abdul"
+          kind: "plain"
+          default: "https://api.minimax.io/anthropic"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_HAIKU_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_HAIKU_MODEL on agent pawla-abdul"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_OPUS_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_OPUS_MODEL on agent pawla-abdul"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_SONNET_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_SONNET_MODEL on agent pawla-abdul"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_MODEL:
+          description: "Optional default for ANTHROPIC_MODEL on agent pawla-abdul"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_SMALL_FAST_MODEL:
+          description: "Optional default for ANTHROPIC_SMALL_FAST_MODEL on agent pawla-abdul"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        API_TIMEOUT_MS:
+          description: "Optional default for API_TIMEOUT_MS on agent pawla-abdul"
+          kind: "plain"
+          default: "3000000"
+          requirement: "optional"
+        CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC:
+          description: "Optional default for CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC on agent pawla-abdul"
+          kind: "plain"
+          default: "1"
+          requirement: "optional"
+        GITHUB_APP_ID:
+          description: "Optional default for GITHUB_APP_ID on agent pawla-abdul"
+          kind: "plain"
+          default: "3141748"
+          requirement: "optional"
+        GITHUB_APP_INSTALLATION_ID:
+          description: "Optional default for GITHUB_APP_INSTALLATION_ID on agent pawla-abdul"
+          kind: "plain"
+          default: "117793367"
+          requirement: "optional"
+        GITHUB_APP_PEM_FILE:
+          description: "Optional default for GITHUB_APP_PEM_FILE on agent pawla-abdul"
+          kind: "plain"
+          default: "/secrets/groombook/groombook-engineer.pem"
+          portability: "system_dependent"
+          requirement: "optional"
+        MINIMAX_API_KEY:
+          description: "Optional default for MINIMAX_API_KEY on agent pawla-abdul"
+          kind: "secret"
+          default: ""
+          requirement: "optional"
+  scrubs-mcbarkley:
+    role: "ceo"
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 28800
+        maxConcurrentRuns: 1
+    permissions:
+      canCreateAgents: true
+    inputs:
+      env:
+        GITHUB_APP_ID:
+          description: "Optional default for GITHUB_APP_ID on agent scrubs-mcbarkley"
+          kind: "plain"
+          default: "3141498"
+          requirement: "optional"
+        GITHUB_APP_INSTALLATION_ID:
+          description: "Optional default for GITHUB_APP_INSTALLATION_ID on agent scrubs-mcbarkley"
+          kind: "plain"
+          default: "117787139"
+          requirement: "optional"
+        GITHUB_APP_PEM_FILE:
+          description: "Optional default for GITHUB_APP_PEM_FILE on agent scrubs-mcbarkley"
+          kind: "plain"
+          default: "/secrets/groombook/groombook-ceo.pem"
+          portability: "system_dependent"
+          requirement: "optional"
+  the-dogfather:
+    role: "cto"
+    icon: "crown"
+    capabilities: "Owns technical roadmap, architecture, engineering hiring, and execution. First engineering leader for a pet grooming platform."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 14400
+        maxConcurrentRuns: 1
+    inputs:
+      env:
+        GITHUB_APP_ID:
+          description: "Optional default for GITHUB_APP_ID on agent the-dogfather"
+          kind: "plain"
+          default: "3141591"
+          requirement: "optional"
+        GITHUB_APP_INSTALLATION_ID:
+          description: "Optional default for GITHUB_APP_INSTALLATION_ID on agent the-dogfather"
+          kind: "plain"
+          default: "117788845"
+          requirement: "optional"
+        GITHUB_APP_PEM_FILE:
+          description: "Optional default for GITHUB_APP_PEM_FILE on agent the-dogfather"
+          kind: "plain"
+          default: "/secrets/groombook/groombook-cto.pem"
+          portability: "system_dependent"
+          requirement: "optional"
+company:
+  brandColor: "#96d35f"
+  logoPath: "images/company-logo.png"
+sidebar:
+  agents:
+    - "scrubs-mcbarkley"
+    - "pawla-abdul"
+    - "the-dogfather"
+    - "flea-flicker"
+    - "lint-roller"

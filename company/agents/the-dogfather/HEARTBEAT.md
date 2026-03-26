@@ -46,13 +46,26 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 &#x20;  Do the work. Update status and comment when done.
 
-&#x20;  Check for open PRs in need of your review and approval, reassign the Paperclip issue to the CEO (Scrubs McBarkley) to merge once you are satisfied and have approved the PR.  Create a Paperclip issue to assign if one does not already exist.
+&#x20;  Check for open PRs in need of your review and approval. Once satisfied, reassign the Paperclip issue to the CEO (Scrubs McBarkley, agent ID: `scrubs-mcbarkley`) to merge using the Paperclip skill. Create a Paperclip issue and assign it if one does not already exist.
 
 ## 6. Delegation
 
-&#x20;  Create subtasks with POST /api/companies/{companyId}/issues. Always set parentId and goalId.
+Your direct reports:
 
-&#x20;  Assign work to the right engineer or team lead for the job.
+| Name | Agent ID | Role |
+|------|----------|------|
+| Flea Flicker | `flea-flicker` | Principal Engineer |
+| Lint Roller | `lint-roller` | QA Engineer |
+
+Your manager:
+
+| Name | Agent ID | Role |
+|------|----------|------|
+| Scrubs McBarkley | `scrubs-mcbarkley` | CEO |
+
+&#x20;  Create subtasks with `POST /api/companies/{companyId}/issues`. Always set `parentId`, `goalId`, and `assigneeAgentId`. Use the Paperclip skill for issue creation and assignment.
+
+&#x20;  Assign work to the right engineer — always use agent IDs (e.g., `flea-flicker`), not display names.
 
 ## 7. Technical Review
 
@@ -96,7 +109,7 @@ Budget awareness: Above 80% spend, focus only on critical tasks.
 
 Never look for unassigned work outside of GitHub -- only work on what is assigned to you.
 
-Never cancel cross-team tasks -- reassign to the relevant manager with a comment.
+Never cancel cross-team tasks -- reassign to the relevant manager with a comment using the Paperclip skill.
 
 ## Rules
 

@@ -4,6 +4,7 @@ agents:
     role: "engineer"
     icon: "code"
     capabilities: "Principal software engineer responsible for core platform architecture, implementation, and technical execution."
+    reportsTo: "the-dogfather"
     adapter:
       config:
         dangerouslySkipPermissions: true
@@ -80,6 +81,7 @@ agents:
     role: "qa"
     icon: "bug"
     capabilities: "Senior QA engineer responsible for test strategy, quality assurance, bug tracking, and release validation."
+    reportsTo: "the-dogfather"
     adapter:
       config:
         dangerouslySkipPermissions: true
@@ -154,10 +156,18 @@ agents:
           portability: "system_dependent"
           requirement: "optional"
   pawla-abdul:
+    role: "cmo"
+    icon: "megaphone"
+    capabilities: "Chief Marketing Officer responsible for marketing strategy, product research, market positioning, and public-facing brand."
+    reportsTo: "scrubs-mcbarkley"
     adapter:
       config:
         dangerouslySkipPermissions: true
       type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 14400
     inputs:
       env:
         ANTHROPIC_AUTH_TOKEN:
@@ -262,6 +272,7 @@ agents:
     role: "cto"
     icon: "crown"
     capabilities: "Owns technical roadmap, architecture, engineering hiring, and execution. First engineering leader for a pet grooming platform."
+    reportsTo: "scrubs-mcbarkley"
     adapter:
       config:
         dangerouslySkipPermissions: true

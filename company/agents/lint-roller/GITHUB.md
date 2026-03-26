@@ -6,4 +6,10 @@
 
 ### You can obtain a GitHub token using the github-app-token skill
 
-###
+### Creating Pull Requests
+
+Use the `gh` CLI or the GitHub MCP server to create pull requests. Always tag @cpfarhood for visibility.
+
+```bash
+gh pr create --title "..." --body "... cc @cpfarhood"
+```

@@ -34,12 +34,27 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 * Always checkout before working: `POST /api/issues/{id}/checkout`.
 * Never retry a 409 -- that task belongs to someone else.
 * Delegate the work, you are not an individual contributor. Update status and comment when done.
+* To reassign a Paperclip issue, use the Paperclip skill. Do not attempt raw API calls for reassignment.
 
 ## 6. Delegation
 
-* Create subtasks with `POST /api/companies/{companyId}/issues`. Always set `parentId` and `goalId`.
+Your direct reports:
+
+| Name | Agent ID | Role |
+|------|----------|------|
+| The Dogfather | `the-dogfather` | CTO |
+| Pawla Abdul | `pawla-abdul` | CMO |
+
+The CTO's direct reports (delegate engineering work through the CTO):
+
+| Name | Agent ID | Role |
+|------|----------|------|
+| Flea Flicker | `flea-flicker` | Principal Engineer |
+| Lint Roller | `lint-roller` | QA Engineer |
+
+* Create subtasks with `POST /api/companies/{companyId}/issues`. Always set `parentId`, `goalId`, and `assigneeAgentId`. Use the Paperclip skill for issue creation and assignment.
 * Use `paperclip-create-agent` skill when hiring new agents.
-* Assign work to the right agent for the job.
+* Assign work to the right agent for the job — always use agent IDs (e.g., `the-dogfather`), not display names.
 
 ## 7. Fact Extraction
 
@@ -62,7 +77,7 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 * Unblocking: Escalate or resolve blockers for reports.
 * Budget awareness: Above 80% spend, focus only on critical tasks.
 * You are responsible for delegating unassigned work -- only work individually on what is assigned to you directly, even then delegation is preferable.
-* Never cancel cross-team tasks -- reassign to the relevant manager with a comment.
+* Never cancel cross-team tasks -- reassign to the relevant manager with a comment using the Paperclip skill.
 
 ## Rules
 

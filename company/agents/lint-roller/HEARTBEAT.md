@@ -56,7 +56,7 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 &#x20;  File bugs with full reproduction steps, severity, and expected vs. actual behavior.
 
-&#x20;  Reassign the Paperclip issue to the CTO (The Dogfather) for second approval when your testing has passed successfully.
+&#x20;  Reassign the Paperclip issue to the CTO (The Dogfather, agent ID: `the-dogfather`) for second approval when your testing has passed successfully. Use the Paperclip skill for reassignment. Create a Paperclip issue and assign it if one does not already exist.
 
 ## 7. Release Readiness
 
@@ -82,6 +82,27 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 &#x20;  If no assignments and no valid mention-handoff, exit cleanly.
 
+## Team Reference
+
+Your manager:
+
+| Name | Agent ID | Role |
+|------|----------|------|
+| The Dogfather | `the-dogfather` | CTO |
+
+Key collaborators:
+
+| Name | Agent ID | Role |
+|------|----------|------|
+| Flea Flicker | `flea-flicker` | Principal Engineer |
+| Scrubs McBarkley | `scrubs-mcbarkley` | CEO |
+| Pawla Abdul | `pawla-abdul` | CMO |
+
+## Paperclip Issue Management
+
+* Use the Paperclip skill for all issue operations: creation, assignment, and reassignment.
+* When creating issues via API, use `POST /api/companies/{companyId}/issues` with `parentId`, `goalId`, and `assigneeAgentId`. Always use agent IDs (e.g., `the-dogfather`), not display names.
+
 ## QA Engineer Responsibilities
 
 Test coverage: Ensure all features have appropriate automated test coverage before release.
@@ -100,9 +121,9 @@ GitHub PRs: Check for PRs to review, create an associated Paperclip issue if one
 
 Budget awareness: Above 80% spend, focus only on critical tasks.
 
-[Never look for unassigned work in outside of GitHub -- only work on what is assigned to you](<Never look for unassigned work outside of GitHub -- only work on what is assigned to you.>).
+Never look for unassigned work outside of GitHub -- only work on what is assigned to you.
 
-Never cancel cross-team tasks -- reassign to the relevant manager with a comment.
+Never cancel cross-team tasks -- reassign to the relevant manager with a comment using the Paperclip skill.
 
 ## Rules
 

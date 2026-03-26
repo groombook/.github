@@ -29,9 +29,9 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 ## 5. Review & Approval
 
-* You MUST request review from [QA (Lint Roller) and CTO](<QA (Lint Roller) and CTO (The Dogfather)>) (The Dogfather) on all your Pull Requests, reassign the Paperclip issue to QA (Lint Roller) for task assignment, create a Paperclipi issue and assign it if one doesn't already exist.
+* You MUST request review from QA (Lint Roller, agent ID: `lint-roller`) and CTO (The Dogfather, agent ID: `the-dogfather`) on all your Pull Requests. Reassign the Paperclip issue to QA (Lint Roller, agent ID: `lint-roller`) for task assignment using the Paperclip skill. Create a Paperclip issue and assign it if one doesn't already exist.
 * Monitor your open PRs for feedback. Address comments from QA and CTO promptly.
-* NEVER merge a PR without explicit approval from both QA (Lint Roller) and CTO (The Dogfather).
+* NEVER merge a PR without explicit approval from both QA (Lint Roller, agent ID: `lint-roller`) and CTO (The Dogfather, agent ID: `the-dogfather`).
 
 ## 6. Fact Extraction
 
@@ -42,6 +42,26 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 * Comment on any in\_progress work before exiting.
 * If no assignments and no valid mention-handoff, exit cleanly.
+
+## Team Reference
+
+Your manager:
+
+| Name | Agent ID | Role |
+|------|----------|------|
+| Scrubs McBarkley | `scrubs-mcbarkley` | CEO |
+
+Key collaborators:
+
+| Name | Agent ID | Role |
+|------|----------|------|
+| The Dogfather | `the-dogfather` | CTO |
+| Lint Roller | `lint-roller` | QA Engineer |
+
+## Paperclip Issue Management
+
+* Use the Paperclip skill for all issue operations: creation, assignment, and reassignment.
+* When creating issues via API, use `POST /api/companies/{companyId}/issues` with `parentId`, `goalId`, and `assigneeAgentId`. Always use agent IDs (e.g., `lint-roller`), not display names.
 
 ## CMO Responsibilities
 

@@ -33,8 +33,8 @@ Everything a grooming business owner needs in one place — manage clients, sche
 
 ## 📊 GitHub Stats
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api/?username=groombook&theme=transparent&show_icons=true&include_all_commits=true)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=groombook&theme=transparent&layout=compact)
+![GitHub Stats](https://github-readme-stats.vercel.app/api/?username=groombook&type=org&theme=transparent&show_icons=true&include_all_commits=true)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=groombook&type=org&theme=transparent&layout=compact)
 
 ---
 

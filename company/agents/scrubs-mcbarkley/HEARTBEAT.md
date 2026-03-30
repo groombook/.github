@@ -24,10 +24,10 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 ## 4. Get Assignments
 
-* `GET /api/companies/{companyId}/issues?assigneeAgentId={your-id}&status=todo,in_progress,blocked`
-* Prioritize: `in_progress` first, then `todo`. Skip `blocked` unless you can unblock it.
-* If there is already an active run on an `in_progress` task, just move on to the next thing.
-* If `PAPERCLIP_TASK_ID` is set and assigned to you, prioritize that task.
+1. `GET /api/agents/me/inbox-lite` to get your assignment list.
+2. If inbox is NOT empty: prioritize `in_progress` first, then `todo`. Skip `blocked` unless you can unblock it. If there is already an active run on an `in_progress` task, move on to the next thing.
+3. If inbox IS empty: run `echo $PAPERCLIP_TASK_ID` to check for a direct task assignment. If set, fetch it: `GET /api/issues/{PAPERCLIP_TASK_ID}`. This is required — routine-created issues do not appear in inbox-lite.
+4. If both inbox and PAPERCLIP_TASK_ID are empty, exit the heartbeat.
 
 ## 5. Checkout and Work
 
@@ -40,19 +40,21 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 Your direct reports:
 
-| Name | Agent ID | Role |
-|------|----------|------|
-| The Dogfather | `the-dogfather` | CTO |
-| Pawla Abdul | `pawla-abdul` | CMO |
+| Name | Agent ID (UUID) | Role |
+|------|-----------------|------|
+| The Dogfather | `2a556501-95e0-4e52-9cf1-e2034678285d` | CTO |
+| Pawla Abdul | `7332abb9-4f85-4f87-ba13-aa7e0d5a2963` | CMO |
 
 The CTO's direct reports (delegate engineering work through the CTO):
 
-| Name | Agent ID | Role |
-|------|----------|------|
-| Flea Flicker | `flea-flicker` | Principal Engineer |
-| Lint Roller | `lint-roller` | QA Engineer |
+| Name | Agent ID (UUID) | Role |
+|------|-----------------|------|
+| Flea Flicker | `515a927a-66b6-449b-aa03-653b697b30f7` | Principal Engineer |
+| Barkley Trimsworth | `fadbc601-1528-4368-9317-31b144ed1655` | Senior Engineer |
+| Lint Roller | `16fa774c-bbab-4647-9f8d-24807b83a24f` | Senior QA Engineer |
+| Shedward Scissorhands | `22f13aec-6df2-4d24-be70-66e0abad7e12` | User Acceptance Tester |
 
-* Create subtasks with `POST /api/companies/{companyId}/issues`. Always set `parentId`, `goalId`, and `assigneeAgentId`. Use the Paperclip skill for issue creation and assignment.
+* Create subtasks with `POST /api/companies/{companyId}/issues`. Always set `parentId`, `goalId`, `assigneeAgentId`, and `"status": "todo"`. Issues default to `backlog` which does NOT trigger an immediate wakeup for the assignee. Use the Paperclip skill for issue creation and assignment.
 * Use `paperclip-create-agent` skill when hiring new agents.
 * Assign work to the right agent for the job — always use agent IDs (e.g., `the-dogfather`), not display names.
 

@@ -1,10 +1,9 @@
 schema: "paperclip/v1"
 agents:
-  flea-flicker:
+  barkley-trimsworth:
     role: "engineer"
     icon: "code"
-    capabilities: "Principal software engineer responsible for core platform architecture, implementation, and technical execution."
-    reportsTo: "the-dogfather"
+    capabilities: "Senior software engineer responsible for platform implementation, feature development, and technical execution."
     adapter:
       config:
         dangerouslySkipPermissions: true
@@ -14,8 +13,98 @@ agents:
       heartbeat:
         enabled: true
         intervalSec: 14400
+        maxConcurrentRuns: 1
     inputs:
       env:
+        AGENT_HOME:
+          description: "Optional default for AGENT_HOME on agent barkley-trimsworth"
+          kind: "plain"
+          default: "/paperclip/instances/default/companies/d50d9792-5817-4ff5-9771-c3267ba12990/agents/fadbc601-1528-4368-9317-31b144ed1655/instructions"
+          portability: "system_dependent"
+          requirement: "optional"
+        ANTHROPIC_AUTH_TOKEN:
+          description: "Optional default for ANTHROPIC_AUTH_TOKEN on agent barkley-trimsworth"
+          kind: "secret"
+          default: ""
+          requirement: "optional"
+        ANTHROPIC_BASE_URL:
+          description: "Optional default for ANTHROPIC_BASE_URL on agent barkley-trimsworth"
+          kind: "plain"
+          default: "https://api.minimax.io/anthropic"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_HAIKU_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_HAIKU_MODEL on agent barkley-trimsworth"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_OPUS_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_OPUS_MODEL on agent barkley-trimsworth"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_SONNET_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_SONNET_MODEL on agent barkley-trimsworth"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_MODEL:
+          description: "Optional default for ANTHROPIC_MODEL on agent barkley-trimsworth"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_SMALL_FAST_MODEL:
+          description: "Optional default for ANTHROPIC_SMALL_FAST_MODEL on agent barkley-trimsworth"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        API_TIMEOUT_MS:
+          description: "Optional default for API_TIMEOUT_MS on agent barkley-trimsworth"
+          kind: "plain"
+          default: "3000000"
+          requirement: "optional"
+        CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC:
+          description: "Optional default for CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC on agent barkley-trimsworth"
+          kind: "plain"
+          default: "1"
+          requirement: "optional"
+        GITHUB_APP_ID:
+          description: "Optional default for GITHUB_APP_ID on agent barkley-trimsworth"
+          kind: "plain"
+          default: "3141748"
+          requirement: "optional"
+        GITHUB_APP_INSTALLATION_ID:
+          description: "Optional default for GITHUB_APP_INSTALLATION_ID on agent barkley-trimsworth"
+          kind: "plain"
+          default: "117793367"
+          requirement: "optional"
+        GITHUB_APP_PEM_FILE:
+          description: "Optional default for GITHUB_APP_PEM_FILE on agent barkley-trimsworth"
+          kind: "plain"
+          default: "/secrets/groombook/groombook-engineer.pem"
+          portability: "system_dependent"
+          requirement: "optional"
+  flea-flicker:
+    role: "engineer"
+    icon: "code"
+    capabilities: "Principal software engineer responsible for core platform architecture, implementation, and technical execution."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        timeoutSec: 3600
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 14400
+        maxConcurrentRuns: 1
+    inputs:
+      env:
+        AGENT_HOME:
+          description: "Optional default for AGENT_HOME on agent flea-flicker"
+          kind: "plain"
+          default: "/paperclip/instances/default/companies/d50d9792-5817-4ff5-9771-c3267ba12990/agents/515a927a-66b6-449b-aa03-653b697b30f7/instructions"
+          portability: "system_dependent"
+          requirement: "optional"
         ANTHROPIC_AUTH_TOKEN:
           description: "Optional default for ANTHROPIC_AUTH_TOKEN on agent flea-flicker"
           kind: "secret"
@@ -81,7 +170,6 @@ agents:
     role: "qa"
     icon: "bug"
     capabilities: "Senior QA engineer responsible for test strategy, quality assurance, bug tracking, and release validation."
-    reportsTo: "the-dogfather"
     adapter:
       config:
         dangerouslySkipPermissions: true
@@ -91,9 +179,15 @@ agents:
       heartbeat:
         enabled: true
         intervalSec: 14400
-        maxConcurrentRuns: 2
+        maxConcurrentRuns: 1
     inputs:
       env:
+        AGENT_HOME:
+          description: "Optional default for AGENT_HOME on agent lint-roller"
+          kind: "plain"
+          default: "/paperclip/instances/default/companies/d50d9792-5817-4ff5-9771-c3267ba12990/agents/16fa774c-bbab-4647-9f8d-24807b83a24f/instructions"
+          portability: "system_dependent"
+          requirement: "optional"
         ANTHROPIC_AUTH_TOKEN:
           description: "Optional default for ANTHROPIC_AUTH_TOKEN on agent lint-roller"
           kind: "secret"
@@ -157,12 +251,12 @@ agents:
           requirement: "optional"
   pawla-abdul:
     role: "cmo"
-    icon: "megaphone"
-    capabilities: "Chief Marketing Officer responsible for marketing strategy, product research, market positioning, and public-facing brand."
-    reportsTo: "scrubs-mcbarkley"
+    icon: "target"
+    capabilities: "Chief Product and Marketing Officer responsible for marketing strategy, market positioning, product strategy, product research, and public-facing brand."
     adapter:
       config:
         dangerouslySkipPermissions: true
+        model: "claude-haiku-4-5-20251001"
       type: "claude_local"
     runtime:
       heartbeat:
@@ -170,50 +264,11 @@ agents:
         intervalSec: 14400
     inputs:
       env:
-        ANTHROPIC_AUTH_TOKEN:
-          description: "Optional default for ANTHROPIC_AUTH_TOKEN on agent pawla-abdul"
-          kind: "secret"
-          default: ""
-          requirement: "optional"
-        ANTHROPIC_BASE_URL:
-          description: "Optional default for ANTHROPIC_BASE_URL on agent pawla-abdul"
+        AGENT_HOME:
+          description: "Optional default for AGENT_HOME on agent pawla-abdul"
           kind: "plain"
-          default: "https://api.minimax.io/anthropic"
-          requirement: "optional"
-        ANTHROPIC_DEFAULT_HAIKU_MODEL:
-          description: "Optional default for ANTHROPIC_DEFAULT_HAIKU_MODEL on agent pawla-abdul"
-          kind: "plain"
-          default: "MiniMax-M2.7"
-          requirement: "optional"
-        ANTHROPIC_DEFAULT_OPUS_MODEL:
-          description: "Optional default for ANTHROPIC_DEFAULT_OPUS_MODEL on agent pawla-abdul"
-          kind: "plain"
-          default: "MiniMax-M2.7"
-          requirement: "optional"
-        ANTHROPIC_DEFAULT_SONNET_MODEL:
-          description: "Optional default for ANTHROPIC_DEFAULT_SONNET_MODEL on agent pawla-abdul"
-          kind: "plain"
-          default: "MiniMax-M2.7"
-          requirement: "optional"
-        ANTHROPIC_MODEL:
-          description: "Optional default for ANTHROPIC_MODEL on agent pawla-abdul"
-          kind: "plain"
-          default: "MiniMax-M2.7"
-          requirement: "optional"
-        ANTHROPIC_SMALL_FAST_MODEL:
-          description: "Optional default for ANTHROPIC_SMALL_FAST_MODEL on agent pawla-abdul"
-          kind: "plain"
-          default: "MiniMax-M2.7"
-          requirement: "optional"
-        API_TIMEOUT_MS:
-          description: "Optional default for API_TIMEOUT_MS on agent pawla-abdul"
-          kind: "plain"
-          default: "3000000"
-          requirement: "optional"
-        CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC:
-          description: "Optional default for CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC on agent pawla-abdul"
-          kind: "plain"
-          default: "1"
+          default: "/paperclip/instances/default/companies/d50d9792-5817-4ff5-9771-c3267ba12990/agents/7332abb9-4f85-4f87-ba13-aa7e0d5a2963/instructions"
+          portability: "system_dependent"
           requirement: "optional"
         GITHUB_APP_ID:
           description: "Optional default for GITHUB_APP_ID on agent pawla-abdul"
@@ -231,6 +286,11 @@ agents:
           default: "/secrets/groombook/groombook-engineer.pem"
           portability: "system_dependent"
           requirement: "optional"
+        MINIMAX_API_HOST:
+          description: "Optional default for MINIMAX_API_HOST on agent pawla-abdul"
+          kind: "plain"
+          default: "https://api.minimax.io"
+          requirement: "optional"
         MINIMAX_API_KEY:
           description: "Optional default for MINIMAX_API_KEY on agent pawla-abdul"
           kind: "secret"
@@ -238,6 +298,7 @@ agents:
           requirement: "optional"
   scrubs-mcbarkley:
     role: "ceo"
+    icon: "crown"
     adapter:
       config:
         dangerouslySkipPermissions: true
@@ -252,6 +313,12 @@ agents:
       canCreateAgents: true
     inputs:
       env:
+        AGENT_HOME:
+          description: "Optional default for AGENT_HOME on agent scrubs-mcbarkley"
+          kind: "plain"
+          default: "/paperclip/instances/default/companies/d50d9792-5817-4ff5-9771-c3267ba12990/agents/1471aa94-e2b4-46b7-8fe7-084865d662fe/instructions"
+          portability: "system_dependent"
+          requirement: "optional"
         GITHUB_APP_ID:
           description: "Optional default for GITHUB_APP_ID on agent scrubs-mcbarkley"
           kind: "plain"
@@ -268,15 +335,16 @@ agents:
           default: "/secrets/groombook/groombook-ceo.pem"
           portability: "system_dependent"
           requirement: "optional"
-  the-dogfather:
-    role: "cto"
-    icon: "crown"
-    capabilities: "Owns technical roadmap, architecture, engineering hiring, and execution. First engineering leader for a pet grooming platform."
-    reportsTo: "scrubs-mcbarkley"
+  shedward-scissorhands:
+    role: "qa"
+    icon: "microscope"
+    capabilities: "User acceptance testing via Playwright MCP. Performs exhaustive pre-production browser evaluation — navigates every page, clicks every interactive element, walks all critical user flows, and blocks releases when defects are found."
     adapter:
       config:
         dangerouslySkipPermissions: true
+        maxTurnsPerRun: 200
         model: "claude-sonnet-4-6"
+        timeoutSec: 3600
       type: "claude_local"
     runtime:
       heartbeat:
@@ -285,6 +353,95 @@ agents:
         maxConcurrentRuns: 1
     inputs:
       env:
+        AGENT_HOME:
+          description: "Optional default for AGENT_HOME on agent shedward-scissorhands"
+          kind: "plain"
+          default: "/paperclip/instances/default/companies/d50d9792-5817-4ff5-9771-c3267ba12990/agents/22f13aec-6df2-4d24-be70-66e0abad7e12/instructions"
+          portability: "system_dependent"
+          requirement: "optional"
+        ANTHROPIC_AUTH_TOKEN:
+          description: "Optional default for ANTHROPIC_AUTH_TOKEN on agent shedward-scissorhands"
+          kind: "secret"
+          default: ""
+          requirement: "optional"
+        ANTHROPIC_BASE_URL:
+          description: "Optional default for ANTHROPIC_BASE_URL on agent shedward-scissorhands"
+          kind: "plain"
+          default: "https://api.minimax.io/anthropic"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_HAIKU_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_HAIKU_MODEL on agent shedward-scissorhands"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_OPUS_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_OPUS_MODEL on agent shedward-scissorhands"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_DEFAULT_SONNET_MODEL:
+          description: "Optional default for ANTHROPIC_DEFAULT_SONNET_MODEL on agent shedward-scissorhands"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_MODEL:
+          description: "Optional default for ANTHROPIC_MODEL on agent shedward-scissorhands"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        ANTHROPIC_SMALL_FAST_MODEL:
+          description: "Optional default for ANTHROPIC_SMALL_FAST_MODEL on agent shedward-scissorhands"
+          kind: "plain"
+          default: "MiniMax-M2.7"
+          requirement: "optional"
+        API_TIMEOUT_MS:
+          description: "Optional default for API_TIMEOUT_MS on agent shedward-scissorhands"
+          kind: "plain"
+          default: "3000000"
+          requirement: "optional"
+        CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC:
+          description: "Optional default for CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC on agent shedward-scissorhands"
+          kind: "plain"
+          default: "1"
+          requirement: "optional"
+        GITHUB_APP_ID:
+          description: "Optional default for GITHUB_APP_ID on agent shedward-scissorhands"
+          kind: "plain"
+          default: "3141835"
+          requirement: "optional"
+        GITHUB_APP_INSTALLATION_ID:
+          description: "Optional default for GITHUB_APP_INSTALLATION_ID on agent shedward-scissorhands"
+          kind: "plain"
+          default: "117794928"
+          requirement: "optional"
+        GITHUB_APP_PEM_FILE:
+          description: "Optional default for GITHUB_APP_PEM_FILE on agent shedward-scissorhands"
+          kind: "plain"
+          default: "/secrets/groombook/groombook-qa.pem"
+          portability: "system_dependent"
+          requirement: "optional"
+  the-dogfather:
+    role: "cto"
+    icon: "cpu"
+    capabilities: "Owns technical roadmap, architecture, engineering hiring, and execution. First engineering leader for a pet grooming platform."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        model: "claude-opus-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 14400
+        maxConcurrentRuns: 1
+    inputs:
+      env:
+        AGENT_HOME:
+          description: "Optional default for AGENT_HOME on agent the-dogfather"
+          kind: "plain"
+          default: "/paperclip/instances/default/companies/d50d9792-5817-4ff5-9771-c3267ba12990/agents/2a556501-95e0-4e52-9cf1-e2034678285d/instructions"
+          portability: "system_dependent"
+          requirement: "optional"
         GITHUB_APP_ID:
           description: "Optional default for GITHUB_APP_ID on agent the-dogfather"
           kind: "plain"
@@ -309,5 +466,7 @@ sidebar:
     - "scrubs-mcbarkley"
     - "pawla-abdul"
     - "the-dogfather"
+    - "barkley-trimsworth"
     - "flea-flicker"
     - "lint-roller"
+    - "shedward-scissorhands"

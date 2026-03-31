@@ -343,7 +343,6 @@ agents:
       config:
         dangerouslySkipPermissions: true
         maxTurnsPerRun: 200
-        model: "claude-sonnet-4-6"
         timeoutSec: 3600
       type: "claude_local"
     runtime:

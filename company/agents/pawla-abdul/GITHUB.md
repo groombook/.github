@@ -8,9 +8,11 @@ Tag @cpfarhood in all pull requests for **visibility only** (cc, not review requ
 
 ### GitHub Authentication
 
-Use the github-app-token skill to create the `GH_TOKEN` env var. The `gh` CLI and GitHub API respect this env var automatically.
+`GH_TOKEN` is automatically injected into your environment by the claude-launcher script before Claude starts. The `gh` CLI and GitHub API respect this env var automatically.
 
-**NEVER run `gh auth login`.** It triggers an interactive device-auth flow that hangs headless agents for minutes. Always use the github-app-token skill instead.
+**NEVER run `gh auth login`.** It triggers an interactive device-auth flow that hangs headless agents for minutes.
+
+> **Token expiry:** The generated token expires after ~1 hour. For long-running tasks, be aware that a new session may be needed if the token expires mid-execution.
 
 ### Creating Pull Requests
 

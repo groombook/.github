@@ -11,7 +11,7 @@
 | Content | Count |
 |---------|-------|
 | Agents | 7 |
-| Skills | 29 |
+| Skills | 28 |
 
 ### Agents
 
@@ -29,7 +29,6 @@
 
 | Skill | Description | Source |
 |-------|-------------|--------|
-| github-app-token | Generate a GitHub installation access token from a GitHub App PEM key, App ID, and Installation ID, then authenticate the gh CLI with it. | [github](https://github.com/farhoodliquor/skills) |
 | flux-controller-patch-releases | > | [github](https://github.com/fluxcd/agent-skills) |
 | gitops-cluster-debug | > | [github](https://github.com/fluxcd/agent-skills) |
 | gitops-knowledge | > | [github](https://github.com/fluxcd/agent-skills) |
@@ -68,4 +67,4 @@ pnpm paperclipai company import this-github-url-or-folder
 See [Paperclip](https://paperclip.ing) for more information.
 
 ---
-Exported from [Paperclip](https://paperclip.ing) on 2026-03-30
+Exported from [Paperclip](https://paperclip.ing) on 2026-03-31

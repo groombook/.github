@@ -7,7 +7,6 @@ skills:
   - "paperclipai/paperclip/paperclip-create-agent"
   - "paperclipai/paperclip/paperclip-create-plugin"
   - "paperclipai/paperclip/para-memory-files"
-  - "farhoodliquor/skills/github-app-token"
   - "minimax-ai/skills/minimax-multimodal-toolkit"
 ---
 

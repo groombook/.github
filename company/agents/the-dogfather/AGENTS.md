@@ -8,7 +8,6 @@ skills:
   - "paperclipai/paperclip/paperclip-create-plugin"
   - "paperclipai/paperclip/para-memory-files"
   - "fluxcd/agent-skills/gitops-knowledge"
-  - "farhoodliquor/skills/github-app-token"
   - "fluxcd/agent-skills/gitops-repo-audit"
 ---
 

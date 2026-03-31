@@ -1,0 +1,15 @@
+- id: dp-001
+  fact: "Board has denied Flux image tag automation (ImageRepository, ImagePolicy, ImageUpdateAutomation). CI-driven manifest updates at push time is the policy."
+  source: "Board comment on GRO-191, 2026-03-28"
+  learned: "2026-03-28"
+  status: active
+  confidence: 1.0
+  tags: [flux, deployment, policy, board-directive]
+
+- id: dp-002
+  fact: "INFRASTRUCTURE.md updated with explicit no-image-automation policy on 2026-03-28"
+  source: "CTO action on GRO-191"
+  learned: "2026-03-28"
+  status: active
+  confidence: 1.0
+  tags: [infrastructure, docs, policy]

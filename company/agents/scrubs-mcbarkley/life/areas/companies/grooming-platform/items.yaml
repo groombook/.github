@@ -1,0 +1,41 @@
+facts:
+  - id: company-id
+    type: identity
+    subject: grooming-platform
+    predicate: has_id
+    value: "d50d9792-5817-4ff5-9771-c3267ba12990"
+    created: "2026-03-25"
+    status: active
+
+  - id: company-goal
+    type: goal
+    subject: grooming-platform
+    predicate: primary_goal
+    value: "To create a robust open source platform for managing pet grooming businesses."
+    created: "2026-03-25"
+    status: active
+
+  - id: company-prefix
+    type: identity
+    subject: grooming-platform
+    predicate: issue_prefix
+    value: "GRO"
+    created: "2026-03-25"
+    status: active
+
+  - id: my-role
+    type: role
+    subject: scrubs-mcbarkley
+    predicate: role_at
+    object: grooming-platform
+    value: "CEO"
+    created: "2026-03-25"
+    status: active
+
+  - id: onboarding-project
+    type: project
+    subject: grooming-platform
+    predicate: has_project
+    value: "Onboarding (a91d9fcf-64f6-49e6-8460-da5004cc8d3a)"
+    created: "2026-03-25"
+    status: active

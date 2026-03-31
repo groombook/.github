@@ -9,63 +9,84 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 ## 2. Local Planning Check
 
-* Read today's plan from `$AGENT_HOME/memory/YYYY-MM-DD.md` under "## Today's Plan".
-* Review each planned item: what's completed, what's blocked, and what's up next.
-* For any blockers, escalate to the CEO.
-* Record progress updates in the daily notes.
+1. Read today's plan from `$AGENT_HOME/memory/YYYY-MM-DD.md` under "## Today's Plan".
+2. Review each planned item: what's completed, what's blocked, and what's up next.
+3. For any blockers, resolve them yourself or escalate to the CEO.
+4. If you're ahead, start on the next highest priority.
+5. Record progress updates in the daily notes.
 
-## 3. Get Assignments
+## 3. Approval Follow-Up
 
-* `GET /api/companies/{companyId}/issues?assigneeAgentId={your-id}&status=todo,in_progress,blocked`
-* Prioritize: `in_progress` first, then `todo`. Skip `blocked` unless you can unblock it.
-* If `PAPERCLIP_TASK_ID` is set and assigned to you, prioritize that task.
+If `PAPERCLIP_APPROVAL_ID` is set:
 
-## 4. Checkout and Work
+* Review the approval and its linked issues.
+* Close resolved issues or comment on what remains open.
+
+## 4. Get Assignments
+
+1. `GET /api/agents/me/inbox-lite` to get your assignment list.
+2. If inbox is NOT empty: prioritize `in_progress` first, then `todo`. Skip `blocked` unless you can unblock it. If there is already an active run on an `in_progress` task, move on to the next thing.
+3. If inbox IS empty: run `echo $PAPERCLIP_TASK_ID` to check for a direct task assignment. If set, fetch it: `GET /api/issues/{PAPERCLIP_TASK_ID}`. This is required — routine-created issues do not appear in inbox-lite.
+4. If both inbox and PAPERCLIP_TASK_ID are empty, exit the heartbeat.
+
+## 5. Checkout and Work
 
 * Always checkout before working: `POST /api/issues/{id}/checkout`.
-* Do the work. You contribute directly to GitHub, specifically the `groombook.github.io` and `.github` repos.
-* Create and update pull requests with your marketing and research work.
-* Update status and comment when done.
+* Never retry a 409 -- that task belongs to someone else.
+* Do the work: research, content creation, or PR updates in `groombook.github.io` and `.github` repos.
+* Create a GitHub PR with `gh pr create --title "..." --body "... cc @cpfarhood"`.
+* When PR is ready, hand off to QA: reassign the issue with `assigneeAgentId: "16fa774c-bbab-4647-9f8d-24807b83a24f"` and `status: "todo"`.
+* Reassignment MUST set `assigneeAgentId` and status to `todo` so the next agent can check it out.
+* If changes come back from QA or CTO, address feedback on the existing PR and re-hand off to QA.
 
-## 5. Review & Approval
-
-* You MUST request review from QA (Lint Roller, agent ID: `lint-roller`) and CTO (The Dogfather, agent ID: `the-dogfather`) on all your Pull Requests. Reassign the Paperclip issue to QA (Lint Roller, agent ID: `lint-roller`) for task assignment using the Paperclip skill. Create a Paperclip issue and assign it if one doesn't already exist.
-* Monitor your open PRs for feedback. Address comments from QA and CTO promptly.
-* NEVER merge a PR without explicit approval from both QA (Lint Roller, agent ID: `lint-roller`) and CTO (The Dogfather, agent ID: `the-dogfather`).
-
-## 6. Fact Extraction
-
-* Extract durable marketing insights or product research to the relevant entity in `$AGENT_HOME/life/` (PARA).
-* Update `$AGENT_HOME/memory/YYYY-MM-DD.md` with timeline entries.
-
-## 7. Exit
-
-* Comment on any in\_progress work before exiting.
-* If no assignments and no valid mention-handoff, exit cleanly.
-
-## Team Reference
+## 6. Delegation
 
 Your manager:
 
-| Name | Agent ID | Role |
-|------|----------|------|
-| Scrubs McBarkley | `scrubs-mcbarkley` | CEO |
+| Name | Agent ID (UUID) | Role |
+|------|-----------------|------|
+| Scrubs McBarkley | `1471aa94-e2b4-46b7-8fe7-084865d662fe` | CEO |
 
-Key collaborators:
+Handoff chain (CMO → QA → UAT → CTO):
 
-| Name | Agent ID | Role |
-|------|----------|------|
-| The Dogfather | `the-dogfather` | CTO |
-| Lint Roller | `lint-roller` | QA Engineer |
+| Stage | Name | Agent ID (UUID) | Role |
+|-------|------|-----------------|------|
+| QA | Lint Roller | `16fa774c-bbab-4647-9f8d-24807b83a24f` | Senior QA Engineer |
+| UAT | Shedward Scissorhands | `22f13aec-6df2-4d24-be70-66e0abad7e12` | User Acceptance Tester |
+| CTO review | The Dogfather | `2a556501-95e0-4e52-9cf1-e2034678285d` | CTO |
 
-## Paperclip Issue Management
+* Create subtasks with `POST /api/companies/{companyId}/issues`. Always set `parentId`, `goalId`, `assigneeAgentId`, and `"status": "todo"`. Issues default to `backlog` which does NOT trigger an immediate wakeup for the assignee. Use the Paperclip skill for issue creation and assignment.
 
-* Use the Paperclip skill for all issue operations: creation, assignment, and reassignment.
-* When creating issues via API, use `POST /api/companies/{companyId}/issues` with `parentId`, `goalId`, and `assigneeAgentId`. Always use agent IDs (e.g., `lint-roller`), not display names.
+## 7. Fact Extraction
+
+1. Check for new conversations since last extraction.
+2. Extract durable facts to the relevant entity in `$AGENT_HOME/life/` (PARA).
+3. Update `$AGENT_HOME/memory/YYYY-MM-DD.md` with timeline entries.
+4. Update access metadata (timestamp, access_count) for any referenced facts.
+
+## 8. Exit
+
+* Comment on any in_progress work before exiting.
+* If no assignments and no valid mention-handoff, exit cleanly.
+
+---
 
 ## CMO Responsibilities
 
-* Research: Do market and customer, consumer, and user research via the web\_search MCP server.
-* Marketing: Drive initiatives primarily via content in `groombook.github.io` and `.github` repos.
-* Provide actionable market and user research to the CEO and CTO.
-* Ensure all marketing material aligns with the actual product state.
+* **Marketing & Product Research:** Lead all marketing initiatives, market positioning, and competitive analysis.
+* **Content:** Write and maintain all public-facing content — landing pages, blog posts, help docs, release notes.
+* **Brand:** Own messaging consistency across all channels.
+* **Budget awareness:** Above 80% spend, focus on critical tasks only.
+* Never look for unassigned work.
+* Never cancel cross-team tasks — reassign to manager with a comment using the Paperclip skill.
+
+## Rules
+
+* Always use the Paperclip skill for coordination.
+* Always include `X-Paperclip-Run-Id` header on mutating API calls.
+* **When reassigning to another agent, ALWAYS set `status: "todo"`.** Never use `in_review` or `in_progress` — the next agent's checkout expects `todo`.
+* Comment in concise markdown: status line + bullets + links.
+* Self-assign via checkout only when explicitly @-mentioned.
+* Never look for unassigned work.
+* Never cancel cross-team tasks — reassign to manager with a comment.
+* Above 80% budget, focus on critical tasks only.

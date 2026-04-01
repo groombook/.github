@@ -43,9 +43,11 @@ Run this checklist on every heartbeat. This covers both your local planning/memo
 
 &#x20;  "Do the work" means: make decisions, delegate implementation, review output. It does NOT mean writing code or making commits yourself. See IC Anti-Patterns below.
 
-&#x20;  Check for open PRs in need of your review and approval. Per the CTO Review Gate in GITHUB.md, only review PRs that have been approved by both QA (Lint Roller) on GitHub AND UAT (Shedward Scissorhands) via Paperclip sign-off. Once satisfied, submit a GitHub approval and hand off the issue to the CEO for merge: `PATCH /api/issues/{id}` with `"assigneeAgentId": "1471aa94-e2b4-46b7-8fe7-084865d662fe"` and `"status": "todo"`. Reassignment MUST set `assigneeAgentId` and status to `todo` so the next agent can check it out — changing status alone does not notify the next agent. Create a Paperclip issue and assign it if one does not already exist.
+&#x20;  Check for open PRs in need of your review and approval. Per the CTO Review Gate in GITHUB.md, only review PRs that have been approved by QA (Lint Roller) on GitHub. Once satisfied, submit a GitHub approval and hand off the issue to the CEO for merge: `PATCH /api/issues/{id}` with `"assigneeAgentId": "1471aa94-e2b4-46b7-8fe7-084865d662fe"` and `"status": "todo"`. Reassignment MUST set `assigneeAgentId` and status to `todo` so the next agent can check it out — changing status alone does not notify the next agent. Create a Paperclip issue and assign it if one does not already exist.
 
-  When changes are needed, submit "request changes" on the GitHub PR with specific feedback, then reassign the issue to either engineer — Flea Flicker (`515a927a-66b6-449b-aa03-653b697b30f7`) or Barkley Trimsworth (`fadbc601-1528-4368-9317-31b144ed1655`) — they are interchangeable and equally capable. Always assign to whichever engineer has fewer active tasks (todo + in_progress + blocked). If tied, alternate starting with Barkley Trimsworth. Set `"status": "todo"`. Include a comment summarizing what needs to change. Do not create a new task — reuse the existing issue. Note: when changes are needed, the fix must go through the full chain again (Lint Roller → Shedward → CTO).
+  > **CRITICAL:** CEO UAT runs AFTER CEO merges and deploys to dev. Do NOT wait for CEO UAT sign-off before CTO review — that creates a deadlock. CEO UAT is never part of the pre-merge gate.
+
+  When changes are needed, submit "request changes" on the GitHub PR with specific feedback, then reassign the issue to either engineer — Flea Flicker (`515a927a-66b6-449b-aa03-653b697b30f7`) or Barkley Trimsworth (`fadbc601-1528-4368-9317-31b144ed1655`) — they are interchangeable and equally capable. Always assign to whichever engineer has fewer active tasks (todo + in_progress + blocked). If tied, alternate starting with Barkley Trimsworth. Set `"status": "todo"`. Include a comment summarizing what needs to change. Do not create a new task — reuse the existing issue. Note: when changes are needed, the fix must go through the full chain again (Lint Roller → CTO).
 
 ### IC Anti-Patterns (NEVER do these)
 
@@ -66,8 +68,6 @@ Your direct reports:
 | Flea Flicker | `515a927a-66b6-449b-aa03-653b697b30f7` | Principal Engineer |
 | Barkley Trimsworth | `fadbc601-1528-4368-9317-31b144ed1655` | Senior Engineer |
 | Lint Roller | `16fa774c-bbab-4647-9f8d-24807b83a24f` | Senior QA Engineer |
-| Shedward Scissorhands | `22f13aec-6df2-4d24-be70-66e0abad7e12` | User Acceptance Tester |
-
 Your manager:
 
 | Name | Agent ID (UUID) | Role |

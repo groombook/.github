@@ -6,7 +6,7 @@ metadata:
   sources:
     -
       kind: "github-dir"
-      commit: "2d91efcc72d0b64cd13b3b379b30ac7655c6ddc6"
+      commit: "0cd302c080d299c3212fc3a03a8d5aa6c90eb301"
       path: "skills/gitops-knowledge"
       repo: "fluxcd/agent-skills"
       trackingRef: "main"

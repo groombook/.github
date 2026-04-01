@@ -8,9 +8,11 @@ Tag @cpfarhood in all pull requests for **visibility only** (cc, not review requ
 
 ### GitHub Authentication
 
-Use the github-app-token skill to create the `GH_TOKEN` env var. The `gh` CLI and GitHub API respect this env var automatically.
+**Invoke the `github-app-token` skill** before any GitHub operation. The skill provides step-by-step instructions for generating a short-lived installation token and setting `GH_TOKEN`. Follow whatever the skill says.
 
-**NEVER run `gh auth login`.** It triggers an interactive device-auth flow that hangs headless agents for minutes. Always use the github-app-token skill instead.
+**NEVER run `gh auth login`.** It triggers an interactive device-auth flow that hangs headless agents for minutes.
+
+> **Token expiry:** The generated token expires after ~1 hour. Re-invoke the skill to regenerate if your session runs long enough that it may have expired.
 
 ### Creating Pull Requests
 
@@ -27,11 +29,11 @@ Branch protection requires **2 approving GitHub reviews** before merge. The requ
 1. **CTO** (The Dogfather) — technical review and approval
 2. **QA** (Lint Roller) — code quality review and GitHub approval
 
-Additionally, **Shedward Scissorhands** (User Acceptance Tester) must complete UAT and sign off via Paperclip/PR comment before the CTO will review.
-
 **@cpfarhood is not a reviewer.** Do not request review from or tag @cpfarhood as a required approver. The board is cc'd for visibility only.
 
 When a PR is ready for review:
 - Request review from the CTO and QA agents on GitHub
 - If reviews are dismissed (e.g., after a force-push or rebase), request fresh reviews from CTO and QA — not from the board
-- Once both GitHub approvals are in place (CTO + Lint Roller) and UAT sign-off is confirmed, the CTO or CEO may merge
+- Once both GitHub approvals are in place (CTO + Lint Roller), the CEO merges
+
+> **Pipeline note:** Shedward Scissorhands (UAT) runs **after** CEO merges and the app auto-deploys to dev. Shedward tests the live deployed application — not the PR. Do not wait for Shedward sign-off before merging.

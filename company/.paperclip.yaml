@@ -6,6 +6,7 @@ agents:
     capabilities: "Senior software engineer responsible for platform implementation, feature development, and technical execution."
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         timeoutSec: 3600
       type: "claude_local"
@@ -89,6 +90,7 @@ agents:
     capabilities: "Principal software engineer responsible for core platform architecture, implementation, and technical execution."
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         timeoutSec: 3600
       type: "claude_local"
@@ -172,6 +174,7 @@ agents:
     capabilities: "Senior QA engineer responsible for test strategy, quality assurance, bug tracking, and release validation."
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         timeoutSec: 3600
       type: "claude_local"
@@ -255,6 +258,7 @@ agents:
     capabilities: "Chief Product and Marketing Officer responsible for marketing strategy, market positioning, product strategy, product research, and public-facing brand."
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         model: "claude-haiku-4-5-20251001"
       type: "claude_local"
@@ -301,6 +305,7 @@ agents:
     icon: "crown"
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         model: "claude-sonnet-4-6"
       type: "claude_local"
@@ -335,97 +340,13 @@ agents:
           default: "/secrets/groombook/groombook-ceo.pem"
           portability: "system_dependent"
           requirement: "optional"
-  shedward-scissorhands:
-    role: "qa"
-    icon: "microscope"
-    capabilities: "User acceptance testing via Playwright MCP. Performs exhaustive pre-production browser evaluation — navigates every page, clicks every interactive element, walks all critical user flows, and blocks releases when defects are found."
-    adapter:
-      config:
-        dangerouslySkipPermissions: true
-        maxTurnsPerRun: 200
-        model: "claude-sonnet-4-6"
-        timeoutSec: 3600
-      type: "claude_local"
-    runtime:
-      heartbeat:
-        enabled: true
-        intervalSec: 14400
-        maxConcurrentRuns: 1
-    inputs:
-      env:
-        AGENT_HOME:
-          description: "Optional default for AGENT_HOME on agent shedward-scissorhands"
-          kind: "plain"
-          default: "/paperclip/instances/default/companies/d50d9792-5817-4ff5-9771-c3267ba12990/agents/22f13aec-6df2-4d24-be70-66e0abad7e12/instructions"
-          portability: "system_dependent"
-          requirement: "optional"
-        ANTHROPIC_AUTH_TOKEN:
-          description: "Optional default for ANTHROPIC_AUTH_TOKEN on agent shedward-scissorhands"
-          kind: "secret"
-          default: ""
-          requirement: "optional"
-        ANTHROPIC_BASE_URL:
-          description: "Optional default for ANTHROPIC_BASE_URL on agent shedward-scissorhands"
-          kind: "plain"
-          default: "https://api.minimax.io/anthropic"
-          requirement: "optional"
-        ANTHROPIC_DEFAULT_HAIKU_MODEL:
-          description: "Optional default for ANTHROPIC_DEFAULT_HAIKU_MODEL on agent shedward-scissorhands"
-          kind: "plain"
-          default: "MiniMax-M2.7"
-          requirement: "optional"
-        ANTHROPIC_DEFAULT_OPUS_MODEL:
-          description: "Optional default for ANTHROPIC_DEFAULT_OPUS_MODEL on agent shedward-scissorhands"
-          kind: "plain"
-          default: "MiniMax-M2.7"
-          requirement: "optional"
-        ANTHROPIC_DEFAULT_SONNET_MODEL:
-          description: "Optional default for ANTHROPIC_DEFAULT_SONNET_MODEL on agent shedward-scissorhands"
-          kind: "plain"
-          default: "MiniMax-M2.7"
-          requirement: "optional"
-        ANTHROPIC_MODEL:
-          description: "Optional default for ANTHROPIC_MODEL on agent shedward-scissorhands"
-          kind: "plain"
-          default: "MiniMax-M2.7"
-          requirement: "optional"
-        ANTHROPIC_SMALL_FAST_MODEL:
-          description: "Optional default for ANTHROPIC_SMALL_FAST_MODEL on agent shedward-scissorhands"
-          kind: "plain"
-          default: "MiniMax-M2.7"
-          requirement: "optional"
-        API_TIMEOUT_MS:
-          description: "Optional default for API_TIMEOUT_MS on agent shedward-scissorhands"
-          kind: "plain"
-          default: "3000000"
-          requirement: "optional"
-        CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC:
-          description: "Optional default for CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC on agent shedward-scissorhands"
-          kind: "plain"
-          default: "1"
-          requirement: "optional"
-        GITHUB_APP_ID:
-          description: "Optional default for GITHUB_APP_ID on agent shedward-scissorhands"
-          kind: "plain"
-          default: "3141835"
-          requirement: "optional"
-        GITHUB_APP_INSTALLATION_ID:
-          description: "Optional default for GITHUB_APP_INSTALLATION_ID on agent shedward-scissorhands"
-          kind: "plain"
-          default: "117794928"
-          requirement: "optional"
-        GITHUB_APP_PEM_FILE:
-          description: "Optional default for GITHUB_APP_PEM_FILE on agent shedward-scissorhands"
-          kind: "plain"
-          default: "/secrets/groombook/groombook-qa.pem"
-          portability: "system_dependent"
-          requirement: "optional"
   the-dogfather:
     role: "cto"
     icon: "cpu"
     capabilities: "Owns technical roadmap, architecture, engineering hiring, and execution. First engineering leader for a pet grooming platform."
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         model: "claude-opus-4-6"
       type: "claude_local"
@@ -469,4 +390,3 @@ sidebar:
     - "barkley-trimsworth"
     - "flea-flicker"
     - "lint-roller"
-    - "shedward-scissorhands"

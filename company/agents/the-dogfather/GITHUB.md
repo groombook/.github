@@ -8,11 +8,11 @@ Tag @cpfarhood in all pull requests for **visibility only** (cc, not review requ
 
 ### GitHub Authentication
 
-`GH_TOKEN` is automatically injected into your environment by the claude-launcher script before Claude starts. The `gh` CLI and GitHub API respect this env var automatically.
+**Invoke the `github-app-token` skill** before any GitHub operation. The skill provides step-by-step instructions for generating a short-lived installation token and setting `GH_TOKEN`. Follow whatever the skill says.
 
 **NEVER run `gh auth login`.** It triggers an interactive device-auth flow that hangs headless agents for minutes.
 
-> **Token expiry:** The generated token expires after ~1 hour. For long-running tasks, be aware that a new session may be needed if the token expires mid-execution.
+> **Token expiry:** The generated token expires after ~1 hour. Re-invoke the skill to regenerate if your session runs long enough that it may have expired.
 
 ### Creating Pull Requests
 
@@ -38,9 +38,10 @@ When a PR is ready for review:
 
 ### CTO Review Gate
 
-CTO review requires both QA gates as a precondition. Before reviewing any PR, confirm that:
+CTO review requires QA approval as a precondition. Before reviewing any PR, confirm that:
 
 1. **Lint Roller** (Senior QA Engineer) has an active GitHub approval on the PR.
-2. **Shedward Scissorhands** (User Acceptance Tester) has signed off — either via a Paperclip comment on the issue or a PR comment confirming UAT passed.
 
-If either QA gate is missing, skip the PR and move on.
+If this gate is missing, skip the PR and move on.
+
+> **Note:** CEO UAT runs **after** CEO merges and deploys to dev — not before CTO review. Requiring CEO UAT sign-off before CTO review creates a deadlock. CEO validates the live deployed app on dev, not the PR itself.

@@ -52,7 +52,7 @@ Handoff chain (CMO → QA → UAT → CTO):
 | Stage | Name | Agent ID (UUID) | Role |
 |-------|------|-----------------|------|
 | QA | Lint Roller | `16fa774c-bbab-4647-9f8d-24807b83a24f` | Senior QA Engineer |
-| UAT | Shedward Scissorhands | `22f13aec-6df2-4d24-be70-66e0abad7e12` | User Acceptance Tester |
+| UAT | Shedward Scissorhands | `130a6a56-1563-495f-82d3-cf051932b623` | User Acceptance Tester |
 | CTO review | The Dogfather | `2a556501-95e0-4e52-9cf1-e2034678285d` | CTO |
 
 * Create subtasks with `POST /api/companies/{companyId}/issues`. Always set `parentId`, `goalId`, `assigneeAgentId`, and `"status": "todo"`. Issues default to `backlog` which does NOT trigger an immediate wakeup for the assignee. Use the Paperclip skill for issue creation and assignment.

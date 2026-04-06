@@ -5,14 +5,17 @@
 * Production/Demo
   * Namespace: groombook
   * FQDN: groombook.farh.net
+* UAT
+  * Namespace: groombook-uat
+  * FQDN: groombook.uat.farh.net
 * Development
-  * [Namespace: groo](<Namespace: groombook&#xA;FQDN: groombook.farh.net>)mbook-dev
+  * Namespace: groombook-dev
   * FQDN: groombook.dev.farh.net
 
 ### Standards
 
 * Kubernetes
-  * Cluster Access: Cluster wide read access is granted as is read/write access to -dev namespaces.
+  * Cluster Access: Cluster wide read access is granted as is read/write access to -dev and -uat namespaces.
   * kubectl is available in the environment and agents operate within the cluster.
 * Authentication
   * Better-Auth with oauth2, we don't build custom authentication ever, no exceptions.

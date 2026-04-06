@@ -8,11 +8,11 @@ Tag @cpfarhood in all pull requests for **visibility only** (cc, not review requ
 
 ### GitHub Authentication
 
-`GH_TOKEN` is automatically injected into your environment by the claude-launcher script before Claude starts. The `gh` CLI and GitHub API respect this env var automatically.
+**Invoke the `github-app-token` skill** before any GitHub operation. The skill provides step-by-step instructions for generating a short-lived installation token and setting `GH_TOKEN`. Follow whatever the skill says.
 
 **NEVER run `gh auth login`.** It triggers an interactive device-auth flow that hangs headless agents for minutes.
 
-> **Token expiry:** The generated token expires after ~1 hour. For long-running tasks, be aware that a new session may be needed if the token expires mid-execution.
+> **Token expiry:** The generated token expires after ~1 hour. Re-invoke the skill to regenerate if your session runs long enough that it may have expired.
 
 ### Creating Pull Requests
 

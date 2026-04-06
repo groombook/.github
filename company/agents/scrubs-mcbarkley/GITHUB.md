@@ -8,11 +8,11 @@ Tag @cpfarhood in all pull requests for **visibility only** (cc, not review requ
 
 ### GitHub Authentication
 
-`GH_TOKEN` is automatically injected into your environment by the claude-launcher script before Claude starts. The `gh` CLI and GitHub API respect this env var automatically.
+**Invoke the `github-app-token` skill** before any GitHub operation. The skill generates a short-lived installation token, writes it to `$AGENT_HOME/.gh-token`, and authenticates via `gh auth login --with-token`. Follow whatever the skill says.
 
-**NEVER run `gh auth login`.** It triggers an interactive device-auth flow that hangs headless agents for minutes.
+**NEVER run `gh auth login` interactively.** The interactive device-auth flow hangs headless agents for minutes. The skill uses `gh auth login --with-token < "$AGENT_HOME/.gh-token"` which is non-interactive and correct. Clean up the token file after use with `rm -f "$AGENT_HOME/.gh-token"`.
 
-> **Token expiry:** The generated token expires after ~1 hour. For long-running tasks, be aware that a new session may be needed if the token expires mid-execution.
+> **Token expiry:** The generated token expires after ~1 hour. Re-invoke the skill to regenerate if your session runs long enough that it may have expired.
 
 ### Creating Pull Requests
 
@@ -24,16 +24,23 @@ gh pr create --title "..." --body "... cc @cpfarhood"
 
 ### PR Review & Merge Policy
 
-Branch protection requires **2 approving GitHub reviews** before merge. The required reviewers are:
+There are **three merge points** corresponding to three environments. Each has different reviewers and a different authorized merger.
 
-1. **CTO** (The Dogfather) — technical review and approval
-2. **QA** (Lint Roller) — code quality review and GitHub approval
+#### Dev merge (Engineer → Dev branch)
+- **Reviewer:** QA (Lint Roller) — code quality review and GitHub approval
+- **Merger:** QA (Lint Roller)
+- **Result:** Auto-deploys to `groombook-dev`
 
-Additionally, **Shedward Scissorhands** (User Acceptance Tester) must complete UAT and sign off via Paperclip/PR comment before the CTO will review.
+#### UAT merge (Dev → UAT branch)
+- **Reviewers:** QA (Lint Roller) + CTO (The Dogfather)
+- **Merger:** CTO (The Dogfather)
+- **Result:** Auto-deploys to `groombook-uat`; Shedward then validates the live UAT environment
 
-**@cpfarhood is not a reviewer.** Do not request review from or tag @cpfarhood as a required approver. The board is cc'd for visibility only.
+#### Production merge (UAT → Production branch)
+- **Prerequisites:** Shedward UAT sign-off + Barkley security review sign-off
+- **Merger:** CEO (Scrubs McBarkley) — sole authorized agent for production merges
+- **Result:** Auto-deploys to `groombook` (production)
 
-When a PR is ready for review:
-- Request review from the CTO and QA agents on GitHub
-- If reviews are dismissed (e.g., after a force-push or rebase), request fresh reviews from CTO and QA — not from the board
-- Once both GitHub approvals are in place (CTO + Lint Roller) and UAT sign-off is confirmed, the CTO or CEO may merge
+**@cpfarhood is not a reviewer.** Do not request review from or tag @cpfarhood as a required approver. The board is cc'd for visibility only (`cc @cpfarhood` in PR body).
+
+> **Note:** Agents have read/write access to dev and UAT environments. Production merges require CEO authorization only after UAT and security gates are cleared.

@@ -2,10 +2,11 @@ schema: "paperclip/v1"
 agents:
   barkley-trimsworth:
     role: "engineer"
-    icon: "code"
-    capabilities: "Senior software engineer responsible for platform implementation, feature development, and technical execution."
+    icon: "shield"
+    capabilities: "Security engineer responsible for code security reviews in the SDLC pipeline (post-UAT gate) and scheduled penetration testing of production and demo environments. Board-authorized for offensive security analysis."
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         timeoutSec: 3600
       type: "claude_local"
@@ -89,6 +90,7 @@ agents:
     capabilities: "Principal software engineer responsible for core platform architecture, implementation, and technical execution."
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         timeoutSec: 3600
       type: "claude_local"
@@ -172,6 +174,7 @@ agents:
     capabilities: "Senior QA engineer responsible for test strategy, quality assurance, bug tracking, and release validation."
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         timeoutSec: 3600
       type: "claude_local"
@@ -252,9 +255,10 @@ agents:
   pawla-abdul:
     role: "cmo"
     icon: "target"
-    capabilities: "Chief Product and Marketing Officer responsible for marketing strategy, market positioning, product strategy, product research, and public-facing brand."
+    capabilities: "Chief Marketing & Product Officer responsible for marketing strategy, market positioning, brand management, product strategy, feature intake and prioritization (PDLC gate), product research, and public-facing content. Primary reviewer of all feature requests — returns Accept, Backlog, or Deny decisions to the CEO before any engineering work begins."
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         model: "claude-haiku-4-5-20251001"
       type: "claude_local"
@@ -299,8 +303,10 @@ agents:
   scrubs-mcbarkley:
     role: "ceo"
     icon: "crown"
+    capabilities: "CEO responsible for company strategy, product roadmap, organizational coordination, hiring, and final production merge authority. Owns the PDLC gate: routes feature requests through CMPO review, approves or denies work, and is the sole agent authorized to merge to production."
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         model: "claude-sonnet-4-6"
       type: "claude_local"
@@ -341,8 +347,16 @@ agents:
     capabilities: "User acceptance testing via Playwright MCP. Performs exhaustive pre-production browser evaluation — navigates every page, clicks every interactive element, walks all critical user flows, and blocks releases when defects are found."
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         maxTurnsPerRun: 200
+        mcpServers:
+          playwright:
+            args:
+              - "@playwright/mcp@latest"
+              - "--headless"
+            command: "npx"
+        model: "claude-haiku-4-5-20251001"
         timeoutSec: 3600
       type: "claude_local"
     runtime:
@@ -425,6 +439,7 @@ agents:
     capabilities: "Owns technical roadmap, architecture, engineering hiring, and execution. First engineering leader for a pet grooming platform."
     adapter:
       config:
+        command: "claude"
         dangerouslySkipPermissions: true
         model: "claude-opus-4-6"
       type: "claude_local"
